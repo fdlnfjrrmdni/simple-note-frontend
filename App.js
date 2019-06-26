@@ -1,15 +1,12 @@
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import React, { Component } from 'react';
+import { createAppContainer, createDrawerNavigator } from 'react-navigation';
 import Home from './src/Screens/Home';
 import Note from './src/Screens/Note';
 
-const AppNavigator = createStackNavigator({
-  Home: {
-    screen: Home
-  },
-  Note: {
-    screen: Note
-  }
+const AppDrawerNavigator = createDrawerNavigator({
+  Home: { screen: Home },
+  Note: { screen: Note }
 });
 
-const appContainer = createAppContainer(AppNavigator);
+const appContainer = createAppContainer(AppDrawerNavigator);
 export default appContainer;

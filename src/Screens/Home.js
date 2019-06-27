@@ -11,6 +11,11 @@ toNote = () => {
   navigation.navigate('Note');
 }
 
+toAddNote = () => {
+  const { navigation } = this.props;
+  navigation.navigate('AddNote');
+}
+
 toggleDrawer = () => {
   const { navigation } = this.props;
   navigation.toggleDrawer();
@@ -42,16 +47,18 @@ render() {
           </Header>
 
           <Modal transparent animationType="none" visible={this.state.modalVisible} onRequestClose={() => { }}>
-            <View style={{ paddingRight: 15, paddingLeft: 200, paddingTop: 50 }}>
-              <View style={styles.modal}>
-              <TouchableOpacity onPress={() => { this.setModal(!this.state.modalVisible); }} >
-                <Text style={{padding: 10}}>ASCENDING</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => { this.setModal(!this.state.modalVisible); }} >
-                <Text style={{padding: 10}}>DESCENDING</Text>
-              </TouchableOpacity>
-              </View> 
-            </View>
+            <TouchableOpacity onPress={() => { this.setModal(!this.state.modalVisible); }} style={{height: '100%'}}>    
+                <View style={{ paddingRight: 15, paddingLeft: 200, paddingTop: 50 }}>
+                  <View style={styles.modal}>
+                  <TouchableOpacity onPress={() => { this.setModal(!this.state.modalVisible); }} >
+                    <Text style={{padding: 10}}>ASCENDING</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity onPress={() => { this.setModal(!this.state.modalVisible); }} >
+                    <Text style={{padding: 10}}>DESCENDING</Text>
+                  </TouchableOpacity>
+                  </View> 
+                </View>
+            </TouchableOpacity>
           </Modal>
 
           <TouchableOpacity style={styles.search}>
@@ -64,6 +71,26 @@ render() {
               title: 'Lifecycle',
               category: 'Work',
               note: 'Component Did Mount, Component Will Unmount lialkhs akshakjs ajshkan ajshalk kjhskjfh kjshfkjsd kjsdh jdhfjslkjhiuwf lakjsfhkjbsd sdhkljsdfkjhaf ksjdchkjdhkahdj kajsdfjbdc lakjdckjnkxlkhskjdfbbak lakfksdb'
+            }, {
+              date: '28 Jul',
+              title: 'Lifecycle',
+              category: 'Work',
+              note: 'Component Did Mount, Component Will Unmount'
+            }, {
+              date: '28 Jul',
+              title: 'Lifecycle',
+              category: 'Work',
+              note: 'Component Did Mount, Component Will Unmount'
+            }, {
+              date: '28 Jul',
+              title: 'Lifecycle',
+              category: 'Work',
+              note: 'Component Did Mount, Component Will Unmount'
+            }, {
+              date: '28 Jul',
+              title: 'Lifecycle',
+              category: 'Work',
+              note: 'Component Did Mount, Component Will Unmount'
             }, {
               date: '28 Jul',
               title: 'Lifecycle',
@@ -88,7 +115,7 @@ render() {
             numColumns={2}
           />
 
-          <Fab style={styles.fab}>
+          <Fab style={styles.fab} onPress={this.toAddNote}>
             <Icon style={styles.fabIcon} name='add' />
           </Fab>
 
@@ -140,9 +167,9 @@ const styles = StyleSheet.create({
   },
   search: {
     height: 45,
-    margin: 30,
-    marginBottom: 40,
-    borderRadius: 17,
+    margin: 25,
+    marginBottom: 35,
+    borderRadius: 19,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -153,7 +180,7 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   searchBar: {
-    borderRadius: 17,
+    borderRadius: 19,
     paddingLeft: 25,
     paddingRight: 25,
     borderBottomColor: 'transparent',
@@ -168,11 +195,11 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 1,
+      height: 2,
     },
-    shadowOpacity: 0.20,
-    shadowRadius: 1.41,
-    elevation: 2,
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
     padding: 12,
     marginBottom: 30,
     // marginRight: 25

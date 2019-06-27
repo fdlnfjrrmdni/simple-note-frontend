@@ -2,13 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, TextInput, TouchableOpacity, StatusBar, ScrollView, FlatList } from 'react-native';
 import { Fab, View, Text, Container, Header, Left, Body, Right, Title, Icon, Button, Thumbnail, Content } from 'native-base';
 
-class Note extends Component{
-
-    toggleDrawer = () => {
-        const { navigation } = this.props;
-        navigation.toggleDrawer();
-    }
-
+class EditNote extends Component{
     toHome = () => {
         const { navigation } = this.props;
         navigation.navigate('Home');
@@ -28,7 +22,7 @@ class Note extends Component{
                     </View>
                     <View>
                         <TouchableOpacity style={{marginRight: 15}} transparent>
-                            <Icon name='checkmark-circle-outline' />
+                            <Icon name='checkmark-circle-outline' style={{color:'#3DB39E'}}/>
                         </TouchableOpacity>
                     </View>
                 </Header>
@@ -60,4 +54,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Note;
+export default EditNote;

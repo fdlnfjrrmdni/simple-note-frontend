@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, TextInput, TouchableOpacity, StatusBar, ScrollView, FlatList, Dimensions} from 'react-native';
-import { Fab, View, Text, Container, Header, Left, Body, Right, Title, Icon, Button, Thumbnail, Content} from 'native-base';
+import { StyleSheet, TextInput, TouchableOpacity, StatusBar, 
+          ScrollView, FlatList, Modal, Button } from 'react-native';
+import { Fab, View, Text, Container, Header, Left, Body, Right, 
+          Title, Icon, Thumbnail, Content } from 'native-base';
 
 class Home extends Component {
 
@@ -14,13 +16,18 @@ toggleDrawer = () => {
   navigation.toggleDrawer();
 }
 
+state = { modalVisible: false, }; 
+setModal(visible) { 
+  this.setState({ modalVisible: visible }); 
+}
+
 render() {
     return (
         <Container>
-          
+          <StatusBar hidden />
           <Header style={styles.header} androidStatusBarColor='#fff' iosBarStyle='dark-content'>
             <View>
-              <TouchableOpacity transparent onPress={this.toggleDrawer}>
+              <TouchableOpacity style={{marginLeft: 10}} onPress={this.toggleDrawer}>
                 <Thumbnail small source={{ uri: 'https://cdn.moneysmart.id/wp-content/uploads/2019/03/08124226/Untitled-design-2.jpeg' }} />
               </TouchableOpacity>
             </View>
@@ -28,11 +35,24 @@ render() {
               <Title style={styles.title}>NOTE APP</Title>
             </View>
             <View>
-              <TouchableOpacity transparent>
+              <TouchableOpacity style={{marginRight: 15}} transparent onPress={() => { this.setModal(true) }}>
                 <Icon name='funnel' />  
               </TouchableOpacity>
             </View>
           </Header>
+
+          <Modal transparent animationType="none" visible={this.state.modalVisible} onRequestClose={() => { }}>
+            <View style={{ paddingRight: 15, paddingLeft: 200, paddingTop: 50 }}>
+              <View style={styles.modal}>
+              <TouchableOpacity onPress={() => { this.setModal(!this.state.modalVisible); }} >
+                <Text style={{padding: 10}}>ASCENDING</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => { this.setModal(!this.state.modalVisible); }} >
+                <Text style={{padding: 10}}>DESCENDING</Text>
+              </TouchableOpacity>
+              </View> 
+            </View>
+          </Modal>
 
           <TouchableOpacity style={styles.search}>
             <TextInput style={styles.searchBar} placeholder="Search..." />
@@ -61,7 +81,7 @@ render() {
                 <Text style={styles.cardDate}>{item.date}</Text>
                 <Text numberOfLines={1} style={styles.cardTitle}>{item.title}</Text>
                 <Text numberOfLines={1} style={styles.cardCategory}>{item.category}</Text>
-                <Text numberOfLines={4} style={styles.cardContent}>{item.note}</Text>
+                <Text numberOfLines={3} style={styles.cardContent}>{item.note}</Text>
               </TouchableOpacity>
               </View>
             }
@@ -78,11 +98,23 @@ render() {
 }
 
 const styles = StyleSheet.create({
+  modal: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    backgroundColor: '#fff',
+    padding: 15,
+  },
   content: {
     // flexDirection: 'row',
     // flex: 1,
     // flexWrap: 'wrap',
-    marginLeft: 24,
+    marginLeft: 27,
     // marginRight: 25,
     justifyContent: 'space-between'
   },
@@ -108,19 +140,20 @@ const styles = StyleSheet.create({
   },
   search: {
     height: 45,
-    margin: 25,
-    borderRadius: 100,
+    margin: 30,
+    marginBottom: 40,
+    borderRadius: 17,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
   },
   searchBar: {
-    borderRadius: 100,
+    borderRadius: 17,
     paddingLeft: 25,
     paddingRight: 25,
     borderBottomColor: 'transparent',
@@ -128,9 +161,9 @@ const styles = StyleSheet.create({
     fontSize: 14
   },
   card: {
-    width: 143,
-    height: 143,
-    borderRadius: 10,
+    width: 138,
+    height: 138,
+    borderRadius: 7,
     backgroundColor: '#2FC2DF',
     shadowColor: "#000",
     shadowOffset: {
@@ -140,8 +173,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.20,
     shadowRadius: 1.41,
     elevation: 2,
-    padding: 10,
-    marginBottom: 25,
+    padding: 12,
+    marginBottom: 30,
     // marginRight: 25
   },
   cardDate: {

@@ -19,7 +19,7 @@ class Note extends Component{
             <Container>
                 <Header style={styles.header} androidStatusBarColor='#fff' iosBarStyle='dark-content'>
                     <View>
-                        <TouchableOpacity transparent onPress={this.toHome}>
+                        <TouchableOpacity style={{marginLeft: 15}} transparent onPress={this.toHome}>
                             <Icon name='arrow-back' />
                         </TouchableOpacity>
                     </View>
@@ -27,7 +27,7 @@ class Note extends Component{
                         <Title style={styles.title}>EDIT NOTE</Title>
                     </View>
                     <View>
-                        <TouchableOpacity transparent>
+                        <TouchableOpacity style={{marginRight: 15}} transparent>
                             <Icon name='checkmark-circle-outline' />
                         </TouchableOpacity>
                     </View>

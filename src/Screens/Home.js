@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, TextInput, TouchableOpacity, StatusBar, ScrollView, FlatList} from 'react-native';
+import { StyleSheet, TextInput, TouchableOpacity, StatusBar, ScrollView, FlatList, Dimensions} from 'react-native';
 import { Fab, View, Text, Container, Header, Left, Body, Right, Title, Icon, Button, Thumbnail, Content} from 'native-base';
 
 class Home extends Component {
@@ -38,16 +38,35 @@ render() {
             <TextInput style={styles.searchBar} placeholder="Search..." />
           </TouchableOpacity>
 
-          <ScrollView>
-            <View style={styles.content}>
+          <FlatList
+            data={[{
+              date: '27 Jul',
+              title: 'Lifecycle',
+              category: 'Work',
+              note: 'Component Did Mount, Component Will Unmount lialkhs akshakjs ajshkan ajshalk kjhskjfh kjshfkjsd kjsdh jdhfjslkjhiuwf lakjsfhkjbsd sdhkljsdfkjhaf ksjdchkjdhkahdj kajsdfjbdc lakjdckjnkxlkhskjdfbbak lakfksdb'
+            }, {
+              date: '28 Jul',
+              title: 'Lifecycle',
+              category: 'Work',
+              note: 'Component Did Mount, Component Will Unmount'
+            }, {
+              date: '28 Jul',
+              title: 'Lifecycle',
+              category: 'Work',
+              note: 'Component Did Mount, Component Will Unmount'
+            }]}
+            renderItem={({item}) =>
+              <View style={styles.content}> 
               <TouchableOpacity style={styles.card} onPress={this.toNote}>
-                <Text style={styles.cardDate}>27 Jul</Text>
-                <Text style={styles.cardTitle}>Lifecycle</Text>
-                <Text style={styles.cardCategory}>Work</Text>
-                <Text style={styles.cardContent}>Component DidMount, Component WiilUnmount</Text>
+                <Text style={styles.cardDate}>{item.date}</Text>
+                <Text numberOfLines={1} style={styles.cardTitle}>{item.title}</Text>
+                <Text numberOfLines={1} style={styles.cardCategory}>{item.category}</Text>
+                <Text numberOfLines={4} style={styles.cardContent}>{item.note}</Text>
               </TouchableOpacity>
-            </View>
-          </ScrollView>
+              </View>
+            }
+            numColumns={2}
+          />
 
           <Fab style={styles.fab}>
             <Icon style={styles.fabIcon} name='add' />
@@ -60,10 +79,11 @@ render() {
 
 const styles = StyleSheet.create({
   content: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginLeft: 25,
-    marginRight: 25,
+    // flexDirection: 'row',
+    // flex: 1,
+    // flexWrap: 'wrap',
+    marginLeft: 24,
+    // marginRight: 25,
     justifyContent: 'space-between'
   },
   header: {
@@ -121,7 +141,8 @@ const styles = StyleSheet.create({
     shadowRadius: 1.41,
     elevation: 2,
     padding: 10,
-    marginBottom: 25
+    marginBottom: 25,
+    // marginRight: 25
   },
   cardDate: {
     color: '#fff',

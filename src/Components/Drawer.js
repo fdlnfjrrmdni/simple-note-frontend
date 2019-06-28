@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { NavigationActions } from 'react-navigation';
 import { StyleSheet, TextInput, TouchableOpacity, StatusBar, 
-          ScrollView, FlatList, Modal, Button } from 'react-native';
+        ScrollView, FlatList, Modal } from 'react-native';
 import { Fab, View, Text, Container, Header, Left, Body, Right, 
-          Title, Icon, Thumbnail, Content, ListItem, Item, Form, Input } from 'native-base';
+        Title, Icon, Thumbnail, Content, ListItem, Item, Form, Input, Label } from 'native-base';
 
 class Drawer extends Component {
     toScreen = (route) => () => {
@@ -38,7 +38,7 @@ class Drawer extends Component {
                                 <Icon name='ios-person' />
                             </Left>
                             <Body style={styles.body}>
-                                <Text style={{ fontSize: 20, fontWeight: '600', color: '#000' }} onPress={this.toScreen('AddNote')}>Person</Text>
+                                <Text style={{ fontSize: 20, fontWeight: '600', color: '#000' }} onPress={this.toScreen('AddNote')}>Personal</Text>
                             </Body>
                         </ListItem>
                         <ListItem icon>
@@ -68,16 +68,16 @@ class Drawer extends Component {
                     </View>
                 </ScrollView>
 
-                <Modal transparent animationType="none" visible={this.state.modalVisible} onRequestClose={() => { }}>
+                <Modal transparent visible={this.state.modalVisible} onRequestClose={() => { }}>
                     <TouchableOpacity onPress={() => { this.setModal(!this.state.modalVisible); }} style={{ height: '100%', backgroundColor: '#aaaaaa70' }}>
                         <View style={{ padding: 60, paddingTop: 220 }}>
                             <View style={styles.modal}>
                                 <Form>
-                                    <Item>
-                                        <Input placeholder='Category Name' />
+                                    <Item last>
+                                        <Input placeholderTextColor='#aaa' placeholder='Category Name' />
                                     </Item>
                                     <Item last>
-                                        <Input placeholder='Image Url' />
+                                        <Input placeholderTextColor='#aaa' placeholder='Image Url' />
                                     </Item>
                                     <View style={{flexDirection: 'row', justifyContent: 'flex-end'}}>
                                         <TouchableOpacity style={{marginRight: 7}} onPress={() => { this.setModal(!this.state.modalVisible); }}>

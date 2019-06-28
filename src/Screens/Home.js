@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, TextInput, TouchableOpacity, StatusBar, 
           ScrollView, FlatList, Modal, Button } from 'react-native';
 import { Fab, View, Text, Container, Header, Left, Body, Right, 
-          Title, Icon, Thumbnail, Content } from 'native-base';
+          Title, Icon, Thumbnail, ContentView } from 'native-base';
 
 class Home extends Component {
 
@@ -61,10 +61,12 @@ render() {
             </TouchableOpacity>
           </Modal>
 
-          <TouchableOpacity style={styles.search}>
-            <TextInput style={styles.searchBar} placeholder="Search..." />
-          </TouchableOpacity>
+          <View style={styles.searchBar}>
+            <TextInput style={{marginLeft: 10,marginRight: 25}} placeholder="Search..." />
+          </View>
 
+<ScrollView>
+  <View style={styles.content}>
           <FlatList
             data={[{
               date: '27 Jul',
@@ -103,17 +105,20 @@ render() {
               note: 'Component Did Mount, Component Will Unmount'
             }]}
             renderItem={({item}) =>
-              <View style={styles.content}> 
-              <TouchableOpacity style={styles.card} onPress={this.toNote}>
+               
+              <View style={{marginRight: 30}}>
+                <TouchableOpacity style={styles.card} onPress={this.toNote}>
                 <Text style={styles.cardDate}>{item.date}</Text>
                 <Text numberOfLines={1} style={styles.cardTitle}>{item.title}</Text>
                 <Text numberOfLines={1} style={styles.cardCategory}>{item.category}</Text>
-                <Text numberOfLines={3} style={styles.cardContent}>{item.note}</Text>
+                <Text numberOfLines={4} style={styles.cardContent}>{item.note}</Text>
               </TouchableOpacity>
               </View>
             }
             numColumns={2}
           />
+  </View>
+</ScrollView>
 
           <Fab style={styles.fab} onPress={this.toAddNote}>
             <Icon style={styles.fabIcon} name='add' />
@@ -143,18 +148,19 @@ const styles = StyleSheet.create({
     // flexWrap: 'wrap',
     marginLeft: 27,
     // marginRight: 25,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    paddingTop: 120
   },
   header: {
     backgroundColor: '#fff',
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 4,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    shadowOpacity: 0.30,
+    shadowRadius: 4.65,
+    elevation: 8,
     justifyContent: 'space-between',
     alignItems: 'center'
   },
@@ -165,28 +171,26 @@ const styles = StyleSheet.create({
     color: '#000',
     alignSelf: 'center'
   },
-  search: {
-    height: 45,
-    margin: 25,
-    marginBottom: 35,
-    borderRadius: 19,
+  searchBar: {
+    zIndex: 1,
+    backgroundColor: '#fff',
+    paddingLeft: 15,
+    borderBottomColor: 'transparent',
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 4,
     },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-    elevation: 4,
-  },
-  searchBar: {
-    borderRadius: 19,
-    paddingLeft: 25,
-    paddingRight: 25,
-    borderBottomColor: 'transparent',
-    fontFamily: 'Open Sans',
-    fontSize: 14
-  },
+    shadowOpacity: 0.30,
+    shadowRadius: 4.65,
+    elevation: 8,
+    marginTop: 85,
+    alignSelf:'center',
+    height: 45,
+    width: 307,
+    position: 'absolute',
+    borderRadius: 20
+            },
   card: {
     width: 138,
     height: 138,
@@ -207,18 +211,22 @@ const styles = StyleSheet.create({
   cardDate: {
     color: '#fff',
     textAlign: 'right',
-    fontSize: 12
+    fontSize: 12,
+    fontWeight: '800'
   },
   cardCategory: {
-    color: '#fff'
+    color: '#fff',
+    fontSize: 13
   },  
   cardTitle: {
     color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 17
+    fontWeight: '900',
+    fontSize: 18
   },
   cardContent: {
-    color: '#fff'
+    color: '#fff',
+    fontSize: 13,
+    fontWeight: '500'
   },
   fab: { backgroundColor: '#fff' },
   fabIcon: { color: '#000' }

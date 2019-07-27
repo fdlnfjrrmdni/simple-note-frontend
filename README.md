@@ -1,32 +1,14 @@
 # Simple Note - Frontend
 
-This is a frontend project for the simple note app.
+This is a frontend project for the [simple note app](https://github.com/fdlnfjrrmdni/simple-note-fullstack). if you want to see the finished project click [this](https://github.com/fdlnfjrrmdni/simple-note-fullstack)
 
-## Getting Started
+### Related Projects
 
-### Dependencies
+* [Fullstack](https://github.com/fdlnfjrrmdni/simple-note-fullstack)
+* [Backend](https://github.com/fdlnfjrrmdni/simple-note-backend)
 
-* [native-base](https://nativebase.io/): 2.12.1
-* [react-native](https://facebook.github.io/react-native/): 0.59.9
-* [react-navigation](https://reactnavigation.org/): 3.11.0
-* [react-redux](https://react-redux.js.org/): 7.1.0
-* [redux](https://redux.js.org/): 4.0.1
-* [redux-logger](https://www.npmjs.com/package/redux-logger/): 3.0.6
-* [redux-promise-middleware](https://www.npmjs.com/package/redux-promise-middleware/): 6.1.1
+### Usage
 
-### Installing
-
-* Android Studio, JDK and SDK must be installed
-* Clone or download this project 
-* Open terminal or command line
-* Change direktory to this project folder
-* Install the dependencies
-
-### Executing program
-
-* Make sure the dependencies are installed
-* and run the command below
-```
-npm install
-react-native run-android
-```
+- Clone or download this repo first
+- Open your terminal or cmd and type `npm install`
+- Finnaly, type `npm start`

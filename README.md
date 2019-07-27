@@ -10,5 +10,6 @@ This is a frontend project for the [simple note app](https://github.com/fdlnfjrr
 ### Usage
 
 - Clone or download this repo first
-- Open your terminal or cmd and type `npm install`
-- Finnaly, type `npm start`
+- Open your terminal or cmd and type `npm install` and `react-native link`
+- Connect your phone to the pc or laptop and make sure your phone is connected with debugging mode
+- Finnaly, type `react-native run-android` and wait for the process to complete
